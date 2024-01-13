@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complex JavaScript Example</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+
+        .colorful-box {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 10px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 18px;
+            color: white;
+            transition: background-color 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container"></div>
+
+    <script>
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function createColorfulBox() {
+            const box = document.createElement('div');
+            box.className = 'colorful-box';
+            box.textContent = 'Click me!';
+            box.addEventListener('click', function() {
+                this.style.backgroundColor = getRandomColor();
+            });
+            return box;
+        }
+
+        function initialize() {
+            const container = document.getElementById('container');
+            for (let i = 0; i < 9; i++) {
+                const colorfulBox = createColorfulBox();
+                container.appendChild(colorfulBox);
+            }
+        }
+
+        window.addEventListener('load', initialize);
+    </script>
+
+</body>
+</html>
